@@ -114,7 +114,7 @@ func main() {
 	}
 	fmt.Println(getInfoText(john.SubscriptionStatus())) // Free user
 
-	// Second way to branch on enum variants: the visitor pattern.
+	// Second way to branch on enum variants: the visitor pattern (preferre).
 	// More verbose, but provides compile-time safety: the compiler will error
 	// if you forget to handle a variant (no default case required).
 	fmt.Println(
