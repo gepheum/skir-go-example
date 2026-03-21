@@ -1,6 +1,7 @@
 // Code snippets showing how to use Go-generated data types.
 //
 // Run with: go run .
+
 package main
 
 import (
@@ -68,8 +69,8 @@ func main() {
 	// Unlike the standard Go 'iota' pattern, Skir enums can carry a value
 	// in wrapper variants.
 	//
-	// Every Skir enum has an UNKNOWN variant even if it is not declared in
-	// the .skir file. UNKNOWN is the zero value for fields of that enum type.
+	// Every Skir enum automatically has an UNKNOWN variant which is not declared
+	// in the .skir file. UNKNOWN is the zero value for fields of that enum type.
 
 	_ = []user.SubscriptionStatus{
 		// UNKNOWN is the default and is present in all Skir enums.
@@ -117,7 +118,10 @@ func main() {
 	// More verbose, but provides compile-time safety: the compiler will error
 	// if you forget to handle a variant (no default case required).
 	fmt.Println(
-		user.SubscriptionStatus_accept(john.SubscriptionStatus(), subscriptionStatusInfoVisitor{}),
+		user.SubscriptionStatus_accept(
+			john.SubscriptionStatus(),
+			subscriptionStatusInfoVisitor{},
+		),
 	) // Free user
 
 	// =========================================================================
@@ -174,7 +178,9 @@ func main() {
 	// 3.14
 	fmt.Println(skir.StringSerializer().ToJson("Foo"))
 	// "Foo"
-	fmt.Println(skir.TimestampSerializer().ToJson(time.UnixMilli(1_743_682_787_000).UTC()))
+	fmt.Println(
+		skir.TimestampSerializer().ToJson(
+			time.UnixMilli(1_743_682_787_000).UTC()))
 	// 1743682787000
 
 	// =========================================================================
