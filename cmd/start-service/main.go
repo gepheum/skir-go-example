@@ -64,8 +64,8 @@ func main() {
 	store := &userStore{}
 
 	b := skir.NewServiceBuilder[struct{}]()
-	skir.RegisterMethod(b, svc.GetUser(), store.getUser)
-	skir.RegisterMethod(b, svc.AddUser(), store.addUser)
+	skir.AddMethod(b, svc.GetUser(), store.getUser)
+	skir.AddMethod(b, svc.AddUser(), store.addUser)
 	service := b.Build()
 
 	fmt.Println("Listening on http://localhost:8787/myapi")
