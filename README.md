@@ -16,7 +16,7 @@ npx skir gen
 go run .
 ```
 
-### Start a Skir service
+### Start a SkirRPC service
 
 From one process, run:
 ```shell
